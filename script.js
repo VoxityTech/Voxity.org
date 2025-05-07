@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitButton.disabled = true;
                 
                 // Get script URL from config
-                const scriptURL = config.GOOGLE_SCRIPT_URL;
+                const scriptURL = "https://script.google.com/macros/s/AKfycbzxdOvps8pSb0avBuImD0XktEhTFQkTxF4pAlW7EJVJbmj1ewFy886PhvIUbGa9pGnd/exec";
                 
                 // Use URLSearchParams for more reliable form submission
                 const formData = new URLSearchParams();
