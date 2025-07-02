@@ -16,7 +16,7 @@ export default function PhoneCallAnimation() {
   ];
 
   const replies = [
-    "I'm doing well, thank you!",
+    "I'm doing well, thank you!!",
     "Thanks for asking, all good here!",
     "Great to hear from you!",
     "Everything's fine on my end!"
