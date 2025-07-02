@@ -1,6 +1,7 @@
+
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone, PhoneCall, PhoneOff, MessageCircle, Volume2 } from "lucide-react";
+import { Phone, PhoneOff, Volume2 } from "lucide-react";
 
 export default function PhoneCallAnimation() {
   const [stage, setStage] = useState(0); // 0: ringing, 1: talking, 2: translating, 3: replying
@@ -58,7 +59,7 @@ export default function PhoneCallAnimation() {
 
   return (
     <div className="relative w-full h-80 flex items-center justify-center">
-      {/* Person with Phone - Better Torso Design */}
+      {/* Person with Phone - Fixed Head Alignment */}
       <div className="relative z-10 mr-8">
         <motion.div
           className="relative"
@@ -72,26 +73,10 @@ export default function PhoneCallAnimation() {
             ease: "easeInOut"
           }}
         >
-          {/* Person's Torso */}
-          <div className="relative">
-            {/* Body/Shirt */}
-            <div className="w-24 h-32 bg-gradient-to-b from-blue-500 to-blue-600 rounded-t-3xl relative">
-              {/* Collar */}
-              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-16 h-4 bg-white rounded-b-xl"></div>
-              
-              {/* Shirt buttons */}
-              <div className="absolute top-6 left-1/2 transform -translate-x-1/2 space-y-2">
-                <div className="w-1 h-1 bg-white rounded-full"></div>
-                <div className="w-1 h-1 bg-white rounded-full"></div>
-                <div className="w-1 h-1 bg-white rounded-full"></div>
-              </div>
-            </div>
-            
-            {/* Neck */}
-            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-6 h-8 bg-gradient-to-b from-amber-200 to-amber-300 rounded-lg"></div>
-            
-            {/* Head */}
-            <motion.div className="absolute -top-16 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-gradient-to-b from-amber-100 to-amber-200 rounded-full relative">
+          {/* Person's Body Container */}
+          <div className="relative flex flex-col items-center">
+            {/* Head directly attached to body */}
+            <motion.div className="w-20 h-20 bg-gradient-to-b from-amber-100 to-amber-200 rounded-full relative mb-0">
               {/* Hair */}
               <div className="absolute -top-2 left-2 right-2 h-6 bg-gradient-to-b from-amber-800 to-amber-900 rounded-t-full"></div>
               
@@ -112,10 +97,23 @@ export default function PhoneCallAnimation() {
                 transition={{ duration: 0.4, repeat: isPersonTalking ? Infinity : 0 }}
               />
             </motion.div>
+            
+            {/* Body/Shirt - directly connected to head */}
+            <div className="w-24 h-32 bg-gradient-to-b from-blue-500 to-blue-600 rounded-t-3xl relative -mt-1">
+              {/* Collar */}
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-16 h-4 bg-white rounded-b-xl"></div>
+              
+              {/* Shirt buttons */}
+              <div className="absolute top-6 left-1/2 transform -translate-x-1/2 space-y-2">
+                <div className="w-1 h-1 bg-white rounded-full"></div>
+                <div className="w-1 h-1 bg-white rounded-full"></div>
+                <div className="w-1 h-1 bg-white rounded-full"></div>
+              </div>
+            </div>
 
             {/* Arms */}
-            <div className="absolute top-8 -left-6 w-6 h-16 bg-gradient-to-b from-amber-200 to-amber-300 rounded-full transform rotate-12"></div>
-            <div className="absolute top-8 -right-6 w-6 h-16 bg-gradient-to-b from-amber-200 to-amber-300 rounded-full transform -rotate-45">
+            <div className="absolute top-18 -left-6 w-6 h-16 bg-gradient-to-b from-amber-200 to-amber-300 rounded-full transform rotate-12"></div>
+            <div className="absolute top-18 -right-6 w-6 h-16 bg-gradient-to-b from-amber-200 to-amber-300 rounded-full transform -rotate-45">
               {/* Phone in hand */}
               <motion.div 
                 className="absolute -bottom-2 -right-2 w-8 h-14 bg-gray-900 rounded-lg flex items-center justify-center shadow-lg"
